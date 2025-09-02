@@ -72,10 +72,13 @@ int find(Array* array, void* element, int (*compare)(void*, void*)) {
 
     for (int i = 0; i < array->size; i++) {
         actual = _get(array, i);
-        if (compare(actual, element) == 0)
+        if (compare(actual, element) == 0) {
+			free(actual);
             return i;
+		}
     }
 
+    free(actual);
     return -1;
 }
 
@@ -102,10 +105,13 @@ bool any(Array* array, bool (*condition)(void*)) {
         element = _get(array, i);
 
         bool result = condition(element);
-        if (result)
-            return true;
+        if (result) {
+			free(element);
+			return true;
+		}
     }
 
+    free(element);
     return false;
 }
 
@@ -116,10 +122,13 @@ bool every(Array* array, bool (*condition)(void*)) {
         element = _get(array, i);
 
         bool result = condition(element);
-        if (!result)
-            return false;
+        if (!result) {
+			free(element);
+			return false;
+		}
     }
 
+    free(element);
     return true;
 }
 
@@ -134,6 +143,7 @@ Array* where(Array* array, bool (*condition)(void*)) {
             add(newArray, element);
     }
 
+	free(element);
     return newArray;
 }
 
@@ -182,6 +192,5 @@ void* _realloc(void* ptr, int oldSize, int newSize, size_t type_size) {
         memcpy(newPtr + i * type_size, ptr + i * type_size, type_size);
     }
 
-	free(ptr);
 	return newPtr;
 }

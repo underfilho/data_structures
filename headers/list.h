@@ -23,7 +23,7 @@ typedef struct List {
 void add(List* list, void* value);
 
 List* newEmptyList(size_t type_size) {
-    List* newList = (List*)malloc(type_size);
+    List* newList = (List*)malloc(sizeof(List));
     newList->head = NULL;
     newList->tail = NULL;
     newList->size = 0;
@@ -39,7 +39,7 @@ List* newList(size_t type_size, int num, ...) {
     va_start(args, num);
     for (int i = 0; i < num; i++) {
         int value = va_arg(args, int);
-        add(newList, value);
+        add(newList, &value);
     }
     va_end(args);
 
