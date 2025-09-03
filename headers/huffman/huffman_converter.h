@@ -1,6 +1,6 @@
 typedef struct {
     char symbol;
-    char code[4];
+    char code[16];
 } CodeMap;
 
 void _getCodesRec(HuffmanNode* node, char* buffer, int depth, Array* out) {
@@ -23,9 +23,9 @@ void _getCodesRec(HuffmanNode* node, char* buffer, int depth, Array* out) {
 }
 
 Array* getCodes(HuffmanTree* tree) {
-    Array* result = newEmptyArray(sizeof(CodeMap), 4);
+    Array* result = newEmptyArray(sizeof(CodeMap), 8);
 
-    char buffer[4];
+    char buffer[16];
     _getCodesRec(tree->root, buffer, 0, result);
 
     return result;

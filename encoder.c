@@ -2,16 +2,18 @@
 #include "headers/priority_queue.h"
 #include "headers/huffman/huffman_tree.h"
 #include "headers/huffman/huffman_converter.h"
-
-void printMap(void* e) {
-    CodeMap* map = (CodeMap*)e;
-	printf("%c: %s\n", map->symbol, map->code);
-}
+#include "headers/utils.h"
 
 int main() {
-    char* text = "AAAABCDD";
+    char* pattern = "AAAABCDD";
 
-    HuffmanTree* tree = buildHuffmanTreeFromString(text);
+    PQueue* pq = buildPriorityQueue(pattern);
+    forEach(pq, printQ);
+    printf("\n");
+
+    getchar();
+
+    HuffmanTree* tree = buildTree(pq);
     printTree(tree);
 
     getchar();
@@ -19,9 +21,9 @@ int main() {
     Array* codes = getCodes(tree);
     forEach(codes, printMap);
 
+    getchar();
+
     char* example = "AAABCD";
     printf("\n%s = ", example);
     printEncoded(codes, example);
-
-    printDecoded(tree, "00011011110");
 }

@@ -14,3 +14,14 @@ void printInt(void* e) {
 void printDouble(void* e) {
     printf("%2.f", *(double*)e);
 }
+
+void printQ(void* e) {
+	Element* element = (Element*)e;
+    HuffmanNode* node = (HuffmanNode*)element->value;
+	printf("%c: %d; ", node->symbol, element->priority);
+}
+
+void printMap(void* e) {
+    CodeMap* map = (CodeMap*)e;
+	printf("%c: %s\n", map->symbol, map->code);
+}

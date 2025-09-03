@@ -25,12 +25,6 @@ int* countFrequencies(char* text) {
     return freq;
 }
 
-void print(void* e) {
-	Element* element = (Element*)e;
-    HuffmanNode* node = (HuffmanNode*)element->value;
-	printf("%c: %d; ", node->symbol, element->priority);
-}
-
 PQueue* buildPriorityQueue(char* text) {
     PQueue* pq = newPriorityQueue(sizeof(Element));
     int* freq = countFrequencies(text);
@@ -80,8 +74,6 @@ HuffmanTree* buildTree(PQueue* pq) {
 
 HuffmanTree* buildHuffmanTreeFromString(char* text) {
     PQueue* pq = buildPriorityQueue(text);
-    forEach(pq, print);
-    printf("\n\n");
     HuffmanTree* tree = buildTree(pq);
 
     return tree;
