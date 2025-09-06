@@ -1,5 +1,5 @@
-char chars[] = { 'A', 'B', 'C', 'D' };
-int size = 4;
+char chars[] = { 'o', 'l', 'a', 'm', 'u', 'n', 'd', ' ' };
+int size = 8;
 
 typedef struct HuffmanNode {
     char symbol;
@@ -89,7 +89,7 @@ void _recPrintTree(HuffmanNode* root, int level) {
     if (root->symbol != '\0')
         printf("'%c' (%d)\n", root->symbol, root->freq);
     else
-        printf("<\n", root->freq);
+        printf("(%d)<\n", root->freq);
 
     _recPrintTree(root->right, level + 1);
 }

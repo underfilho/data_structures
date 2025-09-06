@@ -5,9 +5,9 @@
 #include "headers/utils.h"
 
 int main() {
-    char* pattern = "AAAABCDD";
-    PQueue* pq = buildPriorityQueue(pattern);
-    HuffmanTree* tree = buildTree(pq);
+    char* keyword = "ooalmndu ";
+    PQueue* queue = buildPriorityQueue(keyword);
+    HuffmanTree* tree = buildTree(queue);
 
-    printDecoded(tree, "00011011110");
+    printDecoded(tree, "001001100111011111111001000");
 }

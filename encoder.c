@@ -5,15 +5,15 @@
 #include "headers/utils.h"
 
 int main() {
-    char* pattern = "AAAABCDD";
+    char* keyword = "ooalmndu ";
 
-    PQueue* pq = buildPriorityQueue(pattern);
-    forEach(pq, printQ);
+    PQueue* queue = buildPriorityQueue(keyword);
+    forEach(queue, printQ);
     printf("\n");
-
+    
     getchar();
 
-    HuffmanTree* tree = buildTree(pq);
+    HuffmanTree* tree = buildTree(queue);
     printTree(tree);
 
     getchar();
@@ -21,9 +21,7 @@ int main() {
     Array* codes = getCodes(tree);
     forEach(codes, printMap);
 
-    getchar();
-
-    char* example = "AAABCD";
+    char* example = "ola mundo";
     printf("\n%s = ", example);
     printEncoded(codes, example);
 }
